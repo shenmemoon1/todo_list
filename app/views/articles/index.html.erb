@@ -1,0 +1,6 @@
+<h1 class='text-center'>Hello, Rails</h1>
+<ul class="container list-group">
+  <% @articles.each do |article|%>
+    <li class="list-group-item"><%= article.body %></li>
+  <% end %>
+</ul>
