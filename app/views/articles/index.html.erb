@@ -1,6 +1,11 @@
 <h1 class='text-center'>Hello, Rails</h1>
-<ul class="container list-group">
-  <% @articles.each do |article|%>
-    <li class="list-group-item"><a href='<%= article_path(article)%>'><%= article.body %></a></li>
-  <% end %>
-</ul>
+<div class='container'>
+  <ul class="list-group">
+    <% @articles.each do |article|%>
+      <li class="list-group-item">
+        <%= link_to article.body, article %>
+      </li>
+    <% end %>
+  </ul>
+  <%= link_to 'Create new article', new_article_path, class:"btn btn-success mt-3" %>
+</div>
