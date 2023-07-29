@@ -2,7 +2,8 @@
   <img src="https://images.unsplash.com/photo-1670459471984-26e534ab2c3b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80" class="card-img-top" alt="...">
   <div class="card-body">
     <h5 class="card-title"><%= @article.title %></h5>
-    <p class="card-text"><%= @article.body %>.</p>
+    <%# <p class="card-text"><%= @article.body.</p> %>
     <a href="#" class="btn btn-primary">Go somewhere</a>
+    <%= link_to 'Edit', edit_article_path(@article),class:"btn btn-primary" %>
   </div>
 </div>
