@@ -1,5 +1,5 @@
 <div class='container'>
-  <div class="card mt-4 mx-2 mx-sm-auto " style="width: 18rem;">
+  <div class="card mt-4 mx-2" style="width: 18rem;">
     <img src="https://images.unsplash.com/photo-1670459471984-26e534ab2c3b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80" class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title"><%= @article.title %></h5>
@@ -9,4 +9,35 @@
       <%= link_to 'Destroy', article_path(@article), data: { turbo_confirm: 'Are you sure?',turbo_method: :delete }, class:"btn btn-danger" %>
     </div>
   </div>
+  <h2 class='m-2'>Comments</h2>
+  <% @article.comments.each do |comment| %>
+    <p>
+      <strong>Commenter:</strong>
+      <%= comment.comenter %>
+    </p>
+    <p>
+      <strong>Comment:</strong>
+      <%= comment.body %>
+    </p>
+  <% end %>
+  <h2 class='m-2'>Add a comment:</h2>
+  <%= form_with model: [ @article, @article.comments.build ] do |form| %>
+    <div class="m-3">
+      <%= form.label :comenter, class: "form-label" %><br>
+      <%= form.text_area :comenter, class: "form-control", id: "exampleInputEmail1", aria_describedby: "emailHelp" %>
+      <% @article.errors.full_messages_for(:title).each do |message| %>
+        <div class="alert alert-danger"><%= message %></div>
+      <% end %>
+    </div>
+    <div class="m-3">
+      <%= form.label :body, class: "form-label" %><br>
+      <%= form.text_area :body, class: "form-control", id: "exampleInputEmail1", aria_describedby: "emailHelp" %>
+      <% @article.errors.full_messages_for(:title).each do |message| %>
+        <div class="alert alert-danger"><%= message %></div>
+      <% end %>
+    </div>
+    <div>
+      <%= form.submit 'submit', class: "btn btn-primary m-3" %>
+    </div>
+  <% end %>
 </div>
