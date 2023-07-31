@@ -34,13 +34,18 @@ class ArticlesController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
-
   end
 
   def destroy
     @article = Article.find(params[:id])
-    @article.destroy
-    redirect_to root_path, status: :see_other
+    # @article.destroy
+    @article.comments.destroy_all
+    if @article.destroy
+      redirect_to root_path, notice: 'Article was successfully deleted.'
+    else
+      redirect_to root_path, alert: 'Failed to delete article.'
+    end
+    # redirect_to root_path, status: :see_other
   end
 
   private

@@ -11,14 +11,16 @@
   </div>
   <h2 class='m-2'>Comments</h2>
   <% @article.comments.each do |comment| %>
-    <p>
-      <strong>Commenter:</strong>
-      <%= comment.comenter %>
-    </p>
-    <p>
-      <strong>Comment:</strong>
-      <%= comment.body %>
-    </p>
+    <div class='border border-1 m-2 p-2'>
+      <p>
+        <strong>Commenter:</strong>
+        <%= comment.comenter %>
+      </p>
+      <p>
+        <strong>Comment:</strong>
+        <%= comment.body %>
+      </p>
+    </div>
   <% end %>
   <h2 class='m-2'>Add a comment:</h2>
   <%= form_with model: [ @article, @article.comments.build ] do |form| %>
