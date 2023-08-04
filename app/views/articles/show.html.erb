@@ -1,6 +1,6 @@
 <div class='container'>
-  <div class="card mt-4 mx-2" style="width: 18rem;">
-    <img src="https://images.unsplash.com/photo-1670459471984-26e534ab2c3b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80" class="card-img-top" alt="...">
+  <div class="card mx-auto mx-sm-0" style="width: 18rem;">
+    <img src="https://images.unsplash.com/photo-1616161560417-66d4db5892ec?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title"><%= @article.title %></h5>
       <%# <p class="card-text"><%= @article.body.</p> %>
@@ -10,36 +10,7 @@
     </div>
   </div>
   <h2 class='m-2'>Comments</h2>
-  <% @article.comments.each do |comment| %>
-    <div class='border border-1 m-2 p-2'>
-      <p>
-        <strong>Commenter:</strong>
-        <%= comment.comenter %>
-      </p>
-      <p>
-        <strong>Comment:</strong>
-        <%= comment.body %>
-      </p>
-    </div>
-  <% end %>
+  <%= render @article.comments %>
   <h2 class='m-2'>Add a comment:</h2>
-  <%= form_with model: [ @article, @article.comments.build ] do |form| %>
-    <div class="m-3">
-      <%= form.label :comenter, class: "form-label" %><br>
-      <%= form.text_area :comenter, class: "form-control", id: "exampleInputEmail1", aria_describedby: "emailHelp" %>
-      <% @article.errors.full_messages_for(:title).each do |message| %>
-        <div class="alert alert-danger"><%= message %></div>
-      <% end %>
-    </div>
-    <div class="m-3">
-      <%= form.label :body, class: "form-label" %><br>
-      <%= form.text_area :body, class: "form-control", id: "exampleInputEmail1", aria_describedby: "emailHelp" %>
-      <% @article.errors.full_messages_for(:title).each do |message| %>
-        <div class="alert alert-danger"><%= message %></div>
-      <% end %>
-    </div>
-    <div>
-      <%= form.submit 'submit', class: "btn btn-primary m-3" %>
-    </div>
-  <% end %>
+  <%= render 'comments/form' %>
 </div>

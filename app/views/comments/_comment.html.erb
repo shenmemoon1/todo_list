@@ -1,0 +1,13 @@
+  <% @article.comments.each do |comment| %>
+  <div class='border border-1 m-2 p-2 bg-light'>
+    <% unless comment.archived? %>
+      <p>
+        <strong class='btn btn-secondary'>Commenter: <%= comment.comenter %></strong>
+      </p>
+      <p>
+        <strong class='btn btn-warning'>Comment:</strong>
+        <%= comment.body %>
+      </p>
+    </div>
+  <% end %>
+<% end %>
