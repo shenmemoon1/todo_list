@@ -1,6 +1,8 @@
 <div class='container'>
   <div class="card mt-4 mx-auto mx-sm-0" style="width: 18rem;">
-    <img src="https://images.unsplash.com/photo-1540350394557-8d14678e7f91?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1332&q=80" class="card-img-top" alt="...">
+    <a href="<%= article_info_path(@article) %>">
+      <img src="https://images.unsplash.com/photo-1540350394557-8d14678e7f91?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1332&q=80" class="card-img-top" alt="...">
+    </a>
     <div class="card-body">
       <h5 class="card-title"><%= @article.title %></h5>
       <%# <p class="card-text"><%= @article.body.</p> %>
@@ -10,18 +12,7 @@
     </div>
   </div>
   <h2 class='m-2'>Comments</h2>
-  <% @article.comments.each do |comment| %>
-    <div class='border bg-light m-2 p-2'>
-      <p>
-        <strong>Commenter:</strong>
-        <%= comment.comenter %>
-      </p>
-      <p>
-        <strong>Comment:</strong>
-        <%= comment.body %>
-      </p>
-    </div>
-  <% end %>
+  <%= render @article.comments %>
   <h2 class='m-2'>Add a comment:</h2>
   <%= render 'comments/form' %>
 </div>
