@@ -10,36 +10,7 @@
     </div>
   </div>
   <h2 class='m-2'>Comments</h2>
-  <% @article.comments.each do |comment| %>
-    <div class='border bg-light m-2 p-2'>
-      <p>
-        <strong>Commenter:</strong>
-        <%= comment.comenter %>
-      </p>
-      <p>
-        <strong>Comment:</strong>
-        <%= comment.body %>
-      </p>
-    </div>
-  <% end %>
+  <%= render @article.comments %>
   <h2 class='m-2'>Add a comment:</h2>
-  <%= form_with model: [ @article, @article.comments.build ] do |form| %>
-    <div class="m-3">
-      <%= form.label :comenter, class: "form-label" %><br>
-      <%= form.text_area :comenter, class: "form-control", id: "exampleInputEmail1", aria_describedby: "emailHelp" %>
-      <% @article.errors.full_messages_for(:title).each do |message| %>
-        <div class="alert alert-danger"><%= message %></div>
-      <% end %>
-    </div>
-    <div class="m-3">
-      <%= form.label :body, class: "form-label" %><br>
-      <%= form.text_area :body, class: "form-control", id: "exampleInputEmail1", aria_describedby: "emailHelp" %>
-      <% @article.errors.full_messages_for(:title).each do |message| %>
-        <div class="alert alert-danger"><%= message %></div>
-      <% end %>
-    </div>
-    <div>
-      <%= form.submit 'submit', class: "btn btn-primary m-3" %>
-    </div>
-  <% end %>
+  <%= render 'comments/form' %>
 </div>
