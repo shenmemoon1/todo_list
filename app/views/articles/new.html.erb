@@ -1,4 +1,18 @@
 <div class='container'>
   <h1 class="text-center">Create new article</h1>
-  <%= render partial: 'shared/form', article: @article %>
+  <div class='container'>
+    <%= form_with model: @article, method: :post do |form| %>
+      <div class="m-3">
+        <%= form.label :title, class: "form-label" %><br>
+        <%= form.text_field :title, class: "form-control", id: "exampleInputEmail1", aria_describedby: "emailHelp" %>
+      </div>
+      <div class="m-3">
+        <%= form.label :body, class: "form-label" %><br>
+        <%= form.text_area :body, class: "form-control", id: "exampleInputEmail2", aria_describedby: "emailHelp" %>
+      </div>
+      <div>
+        <%= form.submit 'submit', class: "btn btn-primary m-3" %>
+      </div>
+    <% end %>
+  </div>
 </div>
