@@ -3,16 +3,10 @@
     <div class="m-3">
       <%= form.label :title, class: "form-label" %><br>
       <%= form.text_field :title, class: "form-control", id: "exampleInputEmail1", aria_describedby: "emailHelp" %>
-      <% @article.errors.full_messages_for(:title).each do |message| %>
-        <div class="alert alert-danger"><%= message %></div>
-      <% end %>
     </div>
     <div class="m-3">
       <%= form.label :body, class: "form-label" %><br>
-      <%= form.text_area :body, class: "form-control", id: "exampleInputEmail1", aria_describedby: "emailHelp" %>
-      <% @article.errors.full_messages_for(:title).each do |message| %>
-        <div class="alert alert-danger"><%= message %></div>
-      <% end %>
+      <%= form.text_area :body, class: "form-control", id: "exampleInputEmail2", aria_describedby: "emailHelp" %>
     </div>
     <div>
       <%= form.submit 'submit', class: "btn btn-primary m-3" %>
