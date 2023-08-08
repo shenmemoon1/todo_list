@@ -1,5 +1,5 @@
 <div class='container'>
-  <%= form_with model: @article, method: :post do |form| %>
+  <%= form_with model: @article, method: :patch do |form| %>
     <div class="m-3">
       <%= form.label :title, class: "form-label" %><br>
       <%= form.text_field :title, class: "form-control", id: "exampleInputEmail1", aria_describedby: "emailHelp" %>

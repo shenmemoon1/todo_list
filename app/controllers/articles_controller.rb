@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  http_basic_authenticate_with name: "dhh", password: "secret", except: [:index, :show]
+  http_basic_authenticate_with name: 'dhh', password: 'secret', except: %i[index show]
   def index
     # @articles = Article.all
     @articles = Article.all.order(created_at: :desc)
@@ -34,12 +34,14 @@ class ArticlesController < ApplicationController
 
   def update
     @article = Article.find(params[:id])
+
     if @article.update(article_params)
       redirect_to @article
     else
-      render :new, status: :unprocessable_entity
+      render :edit, status: :unprocessable_entity
     end
   end
+  
 
   def destroy
     @article = Article.find(params[:id])
